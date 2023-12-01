@@ -159,7 +159,7 @@ object Form7: TForm7
     TabOrder = 3
   end
   object btn1: TButton
-    Left = 32
+    Left = 80
     Top = 168
     Width = 75
     Height = 25
@@ -168,7 +168,7 @@ object Form7: TForm7
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 120
+    Left = 168
     Top = 168
     Width = 75
     Height = 25
@@ -177,15 +177,16 @@ object Form7: TForm7
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 208
+    Left = 256
     Top = 168
     Width = 75
     Height = 25
     Caption = 'EDIT'
     TabOrder = 6
+    OnClick = btn3Click
   end
   object btn4: TButton
-    Left = 296
+    Left = 344
     Top = 168
     Width = 75
     Height = 25
@@ -194,7 +195,7 @@ object Form7: TForm7
     OnClick = btn4Click
   end
   object btn5: TButton
-    Left = 384
+    Left = 432
     Top = 168
     Width = 75
     Height = 25
@@ -202,21 +203,13 @@ object Form7: TForm7
     TabOrder = 8
     OnClick = btn5Click
   end
-  object btn6: TButton
-    Left = 472
-    Top = 168
-    Width = 75
-    Height = 25
-    Caption = 'LAPORAN'
-    TabOrder = 9
-  end
   object dbgrd1: TDBGrid
     Left = 16
     Top = 208
     Width = 545
     Height = 193
     DataSource = ds1
-    TabOrder = 10
+    TabOrder = 9
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11

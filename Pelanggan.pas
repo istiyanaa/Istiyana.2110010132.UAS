@@ -31,7 +31,6 @@ type
     frxrprt1: TfrxReport;
     frxdbdtst1: TfrxDBDataset;
     btn4: TButton;
-    btn6: TButton;
     Button1: TButton;
     DBGrid1: TDBGrid;
     lbl1: TLabel;
@@ -118,35 +117,45 @@ end;
 
 procedure TForm5.btn3Click(Sender: TObject);
 var
-  idUser: string;
+  idUserBeforeEdit: string;
+  namaLengkapBeforeEdit: string;
+  telpPelangganBeforeEdit: string;
+  emailPelangganBeforeEdit: string;
+  alamatBeforeEdit: string;
 begin
   if (Edit2.Text = '') or (Edit3.Text = '') or (Edit4.Text = '') or (Edit5.Text = '') then
   begin
     ShowMessage('Semua input harus diisi!');
+    Exit;
+  end;
+
+  idUserBeforeEdit := zqry1.FieldByName('id_pelanggan').AsString;
+
+  // Simpan nilai sebelumnya untuk setiap kolom
+  namaLengkapBeforeEdit := zqry1.FieldByName('nama_lengkap').AsString;
+  telpPelangganBeforeEdit := zqry1.FieldByName('telp_pelanggan').AsString;
+  emailPelangganBeforeEdit := zqry1.FieldByName('email_pelanggan').AsString;
+  alamatBeforeEdit := zqry1.FieldByName('alamat').AsString;
+
+  if (Edit2.Text <> namaLengkapBeforeEdit) or
+     (Edit3.Text <> telpPelangganBeforeEdit) or
+     (Edit4.Text <> emailPelangganBeforeEdit) or
+     (Edit5.Text <> alamatBeforeEdit) then
+  begin
+    zqry1.Edit;
+    zqry1.FieldByName('nama_lengkap').AsString := Edit2.Text;
+    zqry1.FieldByName('telp_pelanggan').AsString := Edit3.Text;
+    zqry1.FieldByName('email_pelanggan').AsString := Edit4.Text;
+    zqry1.FieldByName('alamat').AsString := Edit5.Text;
+    zqry1.Post;
+
+    ShowMessage('Data berhasil diperbarui!');
+    posisiawal;
   end
   else
   begin
-    // Pastikan Anda memperoleh ID saat ini sebelum melakukan Edit
-    idUser := zqry1.FieldByName('id_pelanggan').AsString;
-
-    // Cek apakah ID input sama dengan ID yang ada di database
-    if Edit2.Text = idUser then
-    begin
-      zqry1.Edit;
-      zqry1.FieldByName('nama_lengkap').AsString := Edit2.Text;
-      zqry1.FieldByName('telp_pelanggan').AsString := Edit3.Text;
-      zqry1.FieldByName('email_pelanggan').AsString :=Edit4.Text;
-      zqry1.FieldByName('alamat').AsString := Edit5.Text;
-      zqry1.Post;
-
-      ShowMessage('Data berhasil diperbarui!');
-      posisiawal;
-    end
-    else
-    begin
-      ShowMessage('Perubahan ID tidak diizinkan');
-      posisiawal;
-    end;
+    ShowMessage('Data tidak ada perubahan');
+    posisiawal;
   end;
 end;
 

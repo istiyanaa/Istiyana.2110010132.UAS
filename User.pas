@@ -38,7 +38,6 @@ type
     Button5: TButton;
     frxReport1: TfrxReport;
     frxDBDataset1: TfrxDBDataset;
-    btn1: TButton;
     lbl1: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure posisiawal;
@@ -120,7 +119,7 @@ if Edit2.Text = '' then
   else
   begin
     ZQuery1.SQL.Clear;
-    ZQuery1.SQL.Add('INSERT INTO user VALUES (null, "'+Edit2.Text+'", "'+Edit3.Text+'","'+Edit4.Text+'","'+Edit5.Text+'","'+Edit6.Text+'","'+Edit7.Text+'")');
+    ZQuery1.SQL.Add('INSERT INTO user VALUES (null,"'+Edit2.Text+'", "'+Edit3.Text+'","'+Edit4.Text+'","'+Edit5.Text+'","'+Edit6.Text+'","'+Edit7.Text+'")');
     ZQuery1.ExecSQL;
 
     ZQuery1.SQL.Clear;
@@ -133,7 +132,13 @@ end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 var
-  idUser: string;
+  idUserBeforeEdit: string;
+  namaLengkapBeforeEdit: string;
+  usernameBeforeEdit: string;
+  passwordBeforeEdit: string;
+  jenisKelaminBeforeEdit: string;
+  alamatBeforeEdit: string;
+  emailBeforeEdit: string;
 begin
   if (Edit2.Text = '') or (Edit3.Text = '') or (Edit4.Text = '') or (Edit5.Text = '') or (Edit6.Text = '') or (Edit7.Text = '') then
   begin
@@ -141,16 +146,21 @@ begin
   end
   else
   begin
-    // Pastikan Anda memperoleh ID saat ini sebelum melakukan Edit
-    idUser := ZQuery1.FieldByName('id_user').AsString;
+    namaLengkapBeforeEdit := ZQuery1.FieldByName('nama_lengkap').AsString;
+    usernameBeforeEdit := ZQuery1.FieldByName('username').AsString;
+    passwordBeforeEdit := ZQuery1.FieldByName('password').AsString;
+    jenisKelaminBeforeEdit := ZQuery1.FieldByName('jenis_kelamin').AsString;
+    alamatBeforeEdit := ZQuery1.FieldByName('alamat').AsString;
+    emailBeforeEdit := ZQuery1.FieldByName('email').AsString;
 
-    // Cek apakah ID input sama dengan ID yang ada di database
-    if Edit2.Text = idUser then
+    if (Edit2.Text <> namaLengkapBeforeEdit) or (Edit3.Text <> usernameBeforeEdit) or
+       (Edit4.Text <> passwordBeforeEdit) or (Edit5.Text <> jenisKelaminBeforeEdit) or
+       (Edit6.Text <> alamatBeforeEdit) or (Edit7.Text <> emailBeforeEdit) then
     begin
       ZQuery1.Edit;
       ZQuery1.FieldByName('nama_lengkap').AsString := Edit2.Text;
       ZQuery1.FieldByName('username').AsString := Edit3.Text;
-      ZQuery1.FieldByName('password').AsString :=Edit4.Text;
+      ZQuery1.FieldByName('password').AsString := Edit4.Text;
       ZQuery1.FieldByName('jenis_kelamin').AsString := Edit5.Text;
       ZQuery1.FieldByName('alamat').AsString := Edit6.Text;
       ZQuery1.FieldByName('email').AsString := Edit7.Text;
@@ -161,11 +171,10 @@ begin
     end
     else
     begin
-      ShowMessage('Perubahan ID tidak diizinkan');
+      ShowMessage('Data tidak ada perubahan');
       posisiawal;
     end;
   end;
-
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);

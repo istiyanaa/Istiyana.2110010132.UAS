@@ -1,6 +1,6 @@
 object Form6: TForm6
-  Left = 346
-  Top = 176
+  Left = 173
+  Top = 219
   Width = 630
   Height = 480
   Caption = 'Stok'
@@ -144,6 +144,7 @@ object Form6: TForm6
     Height = 25
     Caption = 'LAPORAN'
     TabOrder = 7
+    OnClick = btn6Click
   end
   object dbgrd1: TDBGrid
     Left = 24
@@ -197,8 +198,8 @@ object Form6: TForm6
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 45258.108505706020000000
-    ReportOptions.LastChange = 45258.108505706020000000
+    ReportOptions.CreateDate = 45258.108505706000000000
+    ReportOptions.LastChange = 45260.993104282400000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -206,14 +207,168 @@ object Form6: TForm6
       'end.')
     Left = 168
     Top = 296
-    Datasets = <>
+    Datasets = <
+      item
+        DataSet = frxdbdtst1
+        DataSetName = 'frxdbdtst1'
+      end>
     Variables = <>
     Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+      object ReportTitle1: TfrxReportTitle
+        Height = 45.354360000000000000
+        Top = 18.897650000000000000
+        Width = 793.701300000000000000
+        object Memo1: TfrxMemoView
+          Left = 241.889920000000000000
+          Top = 18.897650000000000000
+          Width = 245.669450000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Color = clNone
+          HAlign = haCenter
+          Memo.UTF8 = (
+            'LAPORAN STOK BARANG')
+          ParentFont = False
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        Height = 26.456710000000000000
+        Top = 86.929190000000000000
+        Width = 793.701300000000000000
+        object Memo2: TfrxMemoView
+          Left = 136.063080000000000000
+          Top = 7.559060000000000000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            'Id Stok')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Left = 260.787570000000000000
+          Top = 7.559060000000000000
+          Width = 192.756030000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            'Nama Barang')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 453.543600000000000000
+          Top = 7.559060000000000000
+          Width = 151.181200000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            'Jumlah Barang')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Height = 18.897650000000000000
+        Top = 173.858380000000000000
+        Width = 793.701300000000000000
+        DataSet = frxdbdtst1
+        DataSetName = 'frxdbdtst1'
+        RowCount = 0
+        object Memo5: TfrxMemoView
+          Left = 136.063080000000000000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          DataField = 'id_stok'
+          DataSet = frxdbdtst1
+          DataSetName = 'frxdbdtst1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '[frxdbdtst1."id_stok"]')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 260.787570000000000000
+          Width = 192.756030000000000000
+          Height = 18.897650000000000000
+          DataField = 'nama_barang'
+          DataSet = frxdbdtst1
+          DataSetName = 'frxdbdtst1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '[frxdbdtst1."nama_barang"]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Left = 453.543600000000000000
+          Width = 151.181200000000000000
+          Height = 18.897650000000000000
+          DataSet = frxdbdtst1
+          DataSetName = 'frxdbdtst1'
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '[frxdbdtst1."jumlah_barang"]')
+          ParentFont = False
+        end
+      end
+    end
   end
   object frxdbdtst1: TfrxDBDataset
     UserName = 'frxdbdtst1'
     CloseDataSource = False
-    DataSource = ds1
+    DataSet = zqry1
     Left = 224
     Top = 296
   end

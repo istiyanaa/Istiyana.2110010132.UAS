@@ -55,6 +55,7 @@ type
     procedure btn4Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
+    procedure btn6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -167,7 +168,7 @@ begin
       zqry1.Edit;
       zqry1.FieldByName('id_pelanggan').AsString := Edit2.Text;
       zqry1.FieldByName('id_barang').AsString := Edit3.Text;
-      zqry1.FieldByName('banyak_beli').AsString :=Edit4.Text;
+      zqry1.FieldByName('id_user').AsString :=Edit4.Text;
       zqry1.FieldByName('nofaktur').AsString := Edit5.Text;
       zqry1.FieldByName('tglfaktur').AsString := Edit6.Text;
       zqry1.FieldByName('harga_jual').AsString :=Edit7.Text;
@@ -224,7 +225,7 @@ begin
   Edit5.Text := zqry1.FieldByName('nofaktur').AsString;
   Edit6.Text := zqry1.FieldByName('tglfaktur').AsString;
   Edit7.Text := zqry1.FieldByName('harga_beli').AsString;
-  Edit8.Text := zqry1.FieldByName('banyak_jual').AsString;
+  Edit8.Text := zqry1.FieldByName('harga_jual').AsString;
   Edit9.Text := zqry1.FieldByName('banyak_keluar').AsString;
 
   Edit2.Enabled := True;
@@ -237,6 +238,11 @@ begin
   btn3.Enabled := True;
   btn4.Enabled := True;
   btn5.Enabled := True;
+end;
+
+procedure TForm4.btn6Click(Sender: TObject);
+begin
+frxrprt1.ShowReport(true);
 end;
 
 end.

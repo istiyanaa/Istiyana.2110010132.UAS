@@ -56,6 +56,7 @@ type
     procedure btn5Click(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn2Click(Sender: TObject);
+    procedure btn6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -121,25 +122,26 @@ procedure TForm3.btn3Click(Sender: TObject);
 var
   idUser: string;
 begin
-  if (Edit2.Text = '') or (Edit3.Text = '') or (Edit4.Text = '') or (Edit5.Text = '') or (Edit6.Text = '') or (Edit7.Text = '') or (Edit8.Text = '') or (Edit9.Text = '') then
+  if (Edit2.Text = '') or (Edit3.Text = '') or (Edit4.Text = '') or (Edit5.Text = '') or 
+     (Edit6.Text = '') or (Edit7.Text = '') or (Edit8.Text = '') or (Edit9.Text = '') then
   begin
     ShowMessage('Semua input harus diisi!');
   end
   else
   begin
-    // Pastikan Anda memperoleh ID saat ini sebelum melakukan Edit
-    idUser := zqry1.FieldByName('id_pembelian').AsString;
+    // Pastikan Anda memperoleh ID pengguna saat ini sebelum melakukan Edit
+    idUser := zqry1.FieldByName('id_user').AsString; // Ganti kolom 'id_user' dengan kolom yang sesuai
 
-    // Cek apakah ID input sama dengan ID yang ada di database
-    if Edit2.Text = idUser then
+    // Cek apakah ID yang diinput sama dengan ID yang ada di database
+    if Edit4.Text = idUser then // Sesuaikan dengan kolom yang benar
     begin
       zqry1.Edit;
       zqry1.FieldByName('id_barang').AsString := Edit2.Text;
       zqry1.FieldByName('id_supplier').AsString := Edit3.Text;
-      zqry1.FieldByName('id_user').AsString :=Edit4.Text;
+      zqry1.FieldByName('id_user').AsString := Edit4.Text;
       zqry1.FieldByName('nofaktur').AsString := Edit5.Text;
       zqry1.FieldByName('tglfaktur').AsString := Edit6.Text;
-      zqry1.FieldByName('harga_beli').AsString :=Edit7.Text;
+      zqry1.FieldByName('harga_beli').AsString := Edit7.Text;
       zqry1.FieldByName('harga_jual').AsString := Edit8.Text;
       zqry1.FieldByName('banyak_keluar').AsString := Edit9.Text;
       zqry1.Post;
@@ -153,7 +155,6 @@ begin
       posisiawal;
     end;
   end;
-
 end;
 
 procedure TForm3.btn4Click(Sender: TObject);
@@ -191,7 +192,7 @@ begin
   Edit3.Text := zqry1.FieldByName('id_supplier').AsString;
   Edit4.Text := zqry1.FieldByName('id_user').AsString;
   Edit5.Text := zqry1.FieldByName('nofaktur').AsString;
-  Edit6.Text := zqry1.FieldByName('tgl_faktur').AsString;
+  Edit6.Text := zqry1.FieldByName('tglfaktur').AsString;
   Edit7.Text := zqry1.FieldByName('harga_beli').AsString;
   Edit8.Text := zqry1.FieldByName('harga_jual').AsString;
   Edit9.Text := zqry1.FieldByName('banyak_keluar').AsString;
@@ -253,6 +254,11 @@ end else
     ShowMessage('Data berhasil disimpan!');
     posisiawal;
   end;
+end;
+
+procedure TForm3.btn6Click(Sender: TObject);
+begin
+frxrprt1.ShowReport(true);
 end;
 
 end.

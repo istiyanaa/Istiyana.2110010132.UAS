@@ -159,7 +159,7 @@ object Form5: TForm5
     TabOrder = 3
   end
   object btn1: TButton
-    Left = 48
+    Left = 88
     Top = 104
     Width = 75
     Height = 25
@@ -168,7 +168,7 @@ object Form5: TForm5
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 136
+    Left = 176
     Top = 104
     Width = 75
     Height = 25
@@ -177,7 +177,7 @@ object Form5: TForm5
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 224
+    Left = 264
     Top = 104
     Width = 75
     Height = 25
@@ -186,7 +186,7 @@ object Form5: TForm5
     OnClick = btn3Click
   end
   object btn4: TButton
-    Left = 312
+    Left = 352
     Top = 104
     Width = 75
     Height = 25
@@ -194,21 +194,13 @@ object Form5: TForm5
     TabOrder = 7
     OnClick = btn4Click
   end
-  object btn6: TButton
-    Left = 496
-    Top = 104
-    Width = 75
-    Height = 25
-    Caption = 'LAPORAN'
-    TabOrder = 8
-  end
   object Button1: TButton
-    Left = 408
+    Left = 448
     Top = 104
     Width = 75
     Height = 25
     Caption = 'BATAL'
-    TabOrder = 9
+    TabOrder = 8
     OnClick = Button1Click
   end
   object DBGrid1: TDBGrid
@@ -217,7 +209,7 @@ object Form5: TForm5
     Width = 577
     Height = 193
     DataSource = ds1
-    TabOrder = 10
+    TabOrder = 9
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11

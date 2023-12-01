@@ -120,7 +120,7 @@ object Form2: TForm2
     TabOrder = 3
   end
   object btn1: TButton
-    Left = 40
+    Left = 96
     Top = 144
     Width = 75
     Height = 25
@@ -129,7 +129,7 @@ object Form2: TForm2
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 136
+    Left = 192
     Top = 144
     Width = 75
     Height = 25
@@ -138,7 +138,7 @@ object Form2: TForm2
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 232
+    Left = 288
     Top = 144
     Width = 75
     Height = 25
@@ -147,7 +147,7 @@ object Form2: TForm2
     OnClick = btn3Click
   end
   object btn4: TButton
-    Left = 320
+    Left = 376
     Top = 144
     Width = 75
     Height = 25
@@ -156,7 +156,7 @@ object Form2: TForm2
     OnClick = btn4Click
   end
   object btn5: TButton
-    Left = 408
+    Left = 464
     Top = 144
     Width = 75
     Height = 25
@@ -164,21 +164,13 @@ object Form2: TForm2
     TabOrder = 8
     OnClick = btn5Click
   end
-  object btn6: TButton
-    Left = 504
-    Top = 144
-    Width = 75
-    Height = 25
-    Caption = 'LAPORAN'
-    TabOrder = 9
-  end
   object dbgrd1: TDBGrid
     Left = 40
     Top = 184
     Width = 553
     Height = 201
     DataSource = ds1
-    TabOrder = 10
+    TabOrder = 9
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -191,7 +183,7 @@ object Form2: TForm2
     Top = 40
     Width = 153
     Height = 21
-    TabOrder = 11
+    TabOrder = 10
   end
   object con1: TZConnection
     ControlsCodePage = cGET_ACP

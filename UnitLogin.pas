@@ -31,25 +31,32 @@ var
 
 implementation
 
-uses UnitSetelahLogin;
+uses UnitSetelahLogin, MainMenu;
 
 {$R *.dfm}
 
 procedure TForm9.Button1Click(Sender: TObject);
 begin
-if (Edit1.Text='Admin') and (Edit2.Text='Admin')
+if (Edit1.Text='admin') and (Edit2.Text='admin')
   then
   begin
-    form10.show;
+    form9.Hide;
+    form8.show;
+    form8.Label1.Caption:='Selamat Datang Di Toko Butani';
     end
     else
+    begin
     ShowMessage('Username atau Password salah');
+    Edit1.Text:='';
+    Edit2.Text:='';
+    Edit1.SetFocus;
+    Edit2.SetFocus;
+  end;
   end;
 
 procedure TForm9.Button2Click(Sender: TObject);
 begin
-Edit1.Clear;
-Edit2.Clear;
+Application.Terminate;
 end;
 
 end.

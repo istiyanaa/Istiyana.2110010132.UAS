@@ -27,7 +27,6 @@ type
     btn3: TButton;
     btn4: TButton;
     btn5: TButton;
-    btn6: TButton;
     dbgrd1: TDBGrid;
     con1: TZConnection;
     zqry1: TZQuery;
@@ -42,6 +41,7 @@ type
     procedure btn4Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
+    procedure btn3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -161,6 +161,55 @@ begin
   btn3.Enabled := True;
   btn4.Enabled := True;
   btn5.Enabled := True;
+end;
+
+procedure TForm7.btn3Click(Sender: TObject);
+var
+  namaSupplierBeforeEdit: string;
+  alamatSupplierBeforeEdit: string;
+  telpSupplierBeforeEdit: string;
+  emailSupplierBeforeEdit: string;
+begin
+  if (Edit2.Text = '') or (Edit3.Text = '') or (Edit4.Text = '') or (Edit5.Text = '') then
+  begin
+    ShowMessage('Semua input harus diisi!');
+  end
+  else
+  begin
+    namaSupplierBeforeEdit := zqry1.FieldByName('nama_supplier').AsString;
+    alamatSupplierBeforeEdit := zqry1.FieldByName('alamat_supplier').AsString;
+    telpSupplierBeforeEdit := zqry1.FieldByName('telp_supplier').AsString;
+    emailSupplierBeforeEdit := zqry1.FieldByName('email_supplier').AsString;
+
+    if (Edit2.Text <> namaSupplierBeforeEdit) then
+    begin
+      ShowMessage('Perubahan ID tidak diizinkan');
+      posisiawal;
+    end
+    else
+    begin
+      if (Edit2.Text <> namaSupplierBeforeEdit) or
+         (Edit3.Text <> alamatSupplierBeforeEdit) or
+         (Edit4.Text <> telpSupplierBeforeEdit) or
+         (Edit5.Text <> emailSupplierBeforeEdit) then
+      begin
+        zqry1.Edit;
+        zqry1.FieldByName('nama_supplier').AsString := Edit2.Text;
+        zqry1.FieldByName('alamat_supplier').AsString := Edit3.Text;
+        zqry1.FieldByName('telp_supplier').AsString := Edit4.Text;
+        zqry1.FieldByName('email_supplier').AsString := Edit5.Text;
+        zqry1.Post;
+
+        ShowMessage('Data berhasil diperbarui!');
+        posisiawal;
+      end
+      else
+      begin
+        ShowMessage('Data tidak ada perubahan');
+        posisiawal;
+      end;
+    end;
+  end;
 end;
 
 end.

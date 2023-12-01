@@ -23,7 +23,6 @@ type
     btn3: TButton;
     btn4: TButton;
     btn5: TButton;
-    btn6: TButton;
     dbgrd1: TDBGrid;
     con1: TZConnection;
     zqry1: TZQuery;
@@ -94,7 +93,7 @@ procedure TForm2.btn2Click(Sender: TObject);
 begin
 if Edit1.Text = '' then
 begin
-    ShowMessage('Nama Barang tidak boleh kosong!');
+    ShowMessage('Id Stok tidak boleh kosong!');
 end else
 if Edit3.Text = '' then
 begin
@@ -102,15 +101,15 @@ begin
 end else
 if Edit4.Text = '' then
 begin
-    ShowMessage('Nama Barang tidak boleh kosong!');
+    ShowMessage('Satuan tidak boleh kosong!');
 end else
 if Edit5.Text = '' then
 begin
-    ShowMessage('Nama Barang tidak boleh kosong!');
+    ShowMessage('Harga Beli tidak boleh kosong!');
 end else
 if Edit6.Text = '' then
 begin
-    ShowMessage('Nama Barang tidak boleh kosong!');
+    ShowMessage('Harga Jual tidak boleh kosong!');
 end else
   begin
     zqry1.SQL.Clear;
@@ -127,7 +126,11 @@ end;
 
 procedure TForm2.btn3Click(Sender: TObject);
 var
-  idUser: string;
+  idBarang: string;
+  namaBarangBeforeEdit: string;
+  satuanBeforeEdit: string;
+  hargaBeliBeforeEdit: string;
+  hargaJualBeforeEdit: string;
 begin
   if (Edit3.Text = '') or (Edit4.Text = '') or (Edit5.Text = '') or (Edit6.Text = '') then
   begin
@@ -135,15 +138,18 @@ begin
   end
   else
   begin
-    // Pastikan Anda memperoleh ID saat ini sebelum melakukan Edit
-    idUser := zqry1.FieldByName('id_barang').AsString;
+    idBarang := zqry1.FieldByName('id_barang').AsString;
+    namaBarangBeforeEdit := zqry1.FieldByName('nama_barang').AsString;
+    satuanBeforeEdit := zqry1.FieldByName('satuan').AsString;
+    hargaBeliBeforeEdit := zqry1.FieldByName('harga_beli').AsString;
+    hargaJualBeforeEdit := zqry1.FieldByName('harga_jual').AsString;
 
-    // Cek apakah ID input sama dengan ID yang ada di database
-    if Edit3.Text = idUser then
+    if (Edit3.Text <> namaBarangBeforeEdit) or (Edit4.Text <> satuanBeforeEdit) or
+       (Edit5.Text <> hargaBeliBeforeEdit) or (Edit6.Text <> hargaJualBeforeEdit) then
     begin
       zqry1.Edit;
       zqry1.FieldByName('nama_barang').AsString := Edit3.Text;
-      zqry1.FieldByName('satuan').AsString :=Edit4.Text;
+      zqry1.FieldByName('satuan').AsString := Edit4.Text;
       zqry1.FieldByName('harga_beli').AsString := Edit5.Text;
       zqry1.FieldByName('harga_jual').AsString := Edit6.Text;
       zqry1.Post;
@@ -153,11 +159,10 @@ begin
     end
     else
     begin
-      ShowMessage('Perubahan ID tidak diizinkan');
+      ShowMessage('Data tidak ada perubahan');
       posisiawal;
     end;
   end;
-
 end;
 
 procedure TForm2.btn4Click(Sender: TObject);

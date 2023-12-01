@@ -1,6 +1,6 @@
 object Form9: TForm9
-  Left = 388
-  Top = 162
+  Left = 476
+  Top = 235
   Width = 312
   Height = 326
   Caption = 'Login'
@@ -94,7 +94,7 @@ object Form9: TForm9
     TabOrder = 1
   end
   object Button1: TButton
-    Left = 184
+    Left = 24
     Top = 192
     Width = 75
     Height = 25
@@ -109,11 +109,11 @@ object Form9: TForm9
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 24
+    Left = 184
     Top = 192
     Width = 75
     Height = 25
-    Caption = 'Batal'
+    Caption = 'Cancel'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16

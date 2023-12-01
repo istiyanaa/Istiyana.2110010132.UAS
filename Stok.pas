@@ -37,6 +37,7 @@ type
     procedure btn4Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
+    procedure btn6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -105,7 +106,9 @@ end;
 
 procedure TForm6.btn3Click(Sender: TObject);
 var
-  idUser: string;
+  idStok: string;
+  namaBarangBeforeEdit: string;
+  jumlahBarangBeforeEdit: string;
 begin
   if (Edit3.Text = '') or (Edit4.Text = '') then
   begin
@@ -113,15 +116,15 @@ begin
   end
   else
   begin
-    // Pastikan Anda memperoleh ID saat ini sebelum melakukan Edit
-    idUser := zqry1.FieldByName('id_stok').AsString;
+    idStok := zqry1.FieldByName('id_stok').AsString;
+    namaBarangBeforeEdit := zqry1.FieldByName('nama_barang').AsString;
+    jumlahBarangBeforeEdit := zqry1.FieldByName('jumlah_barang').AsString;
 
-    // Cek apakah ID input sama dengan ID yang ada di database
-    if Edit3.Text = idUser then
+    if (Edit3.Text <> namaBarangBeforeEdit) or (Edit4.Text <> jumlahBarangBeforeEdit) then
     begin
       zqry1.Edit;
       zqry1.FieldByName('nama_barang').AsString := Edit3.Text;
-      zqry1.FieldByName('jumlah_barang').AsString :=Edit4.Text;
+      zqry1.FieldByName('jumlah_barang').AsString := Edit4.Text;
       zqry1.Post;
 
       ShowMessage('Data berhasil diperbarui!');
@@ -129,11 +132,10 @@ begin
     end
     else
     begin
-      ShowMessage('Perubahan ID tidak diizinkan');
+      ShowMessage('Data tidak ada perubahan');
       posisiawal;
     end;
   end;
-
 end;
 
 procedure TForm6.btn4Click(Sender: TObject);
@@ -181,5 +183,10 @@ begin
   btn5.Enabled := True;
 end;
 
+
+procedure TForm6.btn6Click(Sender: TObject);
+begin
+frxrprt1.ShowReport(true);
+end;
 
 end.
